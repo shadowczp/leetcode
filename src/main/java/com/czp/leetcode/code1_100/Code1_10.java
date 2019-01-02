@@ -1,12 +1,13 @@
-package com.czp.leetcode;
+package com.czp.leetcode.code1_100;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-public class TwoSum {
+public class Code1_10 {
     /**
+     * No.1
      * 求两数之和，返回数组下标
      * 思路：从头到尾构建一个hashMap，每次操作先计算target-current的值
      * 然后检查是否在map中，如果在，直接返回
@@ -40,6 +41,7 @@ public class TwoSum {
     }
 
     /**
+     * No.2
      * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
      * Output: 7 -> 0 -> 8
      * Explanation: 342 + 465 = 807.
@@ -83,6 +85,7 @@ public class TwoSum {
     }
 
     /**
+     * No.3
      * 最长序列
      * Input: "abcabcbb"
      * Output: 3
@@ -91,6 +94,7 @@ public class TwoSum {
      * Input: "pwwkew"
      * Output: 3
      * 思路：每次遇到相同的字符，就将相同的字符的下标替换，然后删去相同字符前面的字符
+     *
      * @param s
      * @return
      */
