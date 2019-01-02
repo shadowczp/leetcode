@@ -90,28 +90,37 @@ public class TwoSum {
      * Output: 1
      * Input: "pwwkew"
      * Output: 3
-     *
+     * 思路：每次遇到相同的字符，就将相同的字符的下标替换，然后删去相同字符前面的字符
      * @param s
      * @return
      */
-//    public int lengthOfLongestSubstring(String s) {
-//        char[] chars = s.toCharArray();
-//        HashSet<Character> charSet = new HashSet<>();
-//        int len = chars.length;
-//        int count = 0;
-//        int max = count;
-//        for (int i = 0; i < len; i++) {
-//            char aChar = chars[i];
-//            if (charSet.contains(aChar)) {
-//                charSet = new HashSet<>();
-//                if (count > max) {
-//                    max = count;
-//                }
-//                count = 0;
-//            }
-//            charSet.add(aChar);
-//            count++;
-//        }
-//        return count > max ? count : max;
-//    }
+    public int lengthOfLongestSubstring(String s) {
+        char[] chars = s.toCharArray();
+        HashMap<Character, Integer> charSet = new HashMap<>();
+        int last = 0;
+        int len = chars.length;
+        char[] idxSet = new char[len];
+        int count = 0;
+        int max = count;
+        for (int i = 0; i < len; i++) {
+            char aChar = chars[i];
+            if (charSet.containsKey(aChar)) {
+                Integer idx = charSet.get(aChar);
+
+                if (count > max) {
+                    max = count;
+                }
+                count = i - idx - 1;
+                while (last <= idx) {
+                    charSet.remove(idxSet[last]);
+                    last++;
+                }
+
+            }
+            charSet.put(aChar, i);
+            idxSet[i] = aChar;
+            count++;
+        }
+        return count > max ? count : max;
+    }
 }
